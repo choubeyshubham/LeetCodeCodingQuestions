@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class Longest_Substring_03 {
+public class LongestSubstringWithoutRepeatingCharacters_03 {
     public static void main(String[] args) {
 
 
