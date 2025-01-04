@@ -1,6 +1,4 @@
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+package A0_20;
 
 public class Main {
     public static void main(String[] args) {

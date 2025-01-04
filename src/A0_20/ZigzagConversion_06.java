@@ -1,5 +1,6 @@
+package A0_20;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class ZigzagConversion_06 {

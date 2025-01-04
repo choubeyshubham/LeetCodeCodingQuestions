@@ -1,3 +1,5 @@
+package A0_20;
+
 public class PalindromeNumber09 {
 
     /*
