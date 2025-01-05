@@ -1,6 +1,4 @@
-package A0_20.AddTwoNumbers_02;
-
-import jdk.dynalink.beans.StaticClass;
+package A0_20;
 
 import java.util.ArrayList;
 import java.util.Arrays;
