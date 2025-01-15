@@ -1,4 +1,4 @@
-package A0_20.AddTwoNumbers_02;
+package A0_20;
 
 import java.util.ArrayList;
 import java.util.Arrays;
