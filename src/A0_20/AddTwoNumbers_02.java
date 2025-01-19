@@ -1,4 +1,4 @@
-package A0_20.ListQuestion;
+package A0_20;
 
 public class AddTwoNumbers_02 {
 

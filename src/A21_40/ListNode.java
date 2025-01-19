@@ -1,4 +1,4 @@
-package A21_40.ListQuestion;
+package A21_40;
 
 public class ListNode {
      int val;
