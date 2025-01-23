@@ -3,7 +3,7 @@ package A21_40;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
-public interface MergeKSortedLists_23 {
+public class MergeKSortedLists_23 {
     /*
 You are given an array of k linked-lists lists, each linked-list is sorted in ascending order.
 
