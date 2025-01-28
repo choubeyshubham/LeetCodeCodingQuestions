@@ -19,27 +19,51 @@ Explanation: 10/3 = 3.33333.. which is truncated to 3.
     public static void main(String[] args) {
 
 
+        System.out.println(divide(10, -3));
+
 
     }
     public static int divide(long dividend, long divisor) {
-        // -2^{31} / -1 = 2^31 will overflow, so return 2^31 - 1.
-        if (dividend == Integer.MIN_VALUE && divisor == -1)
-            return Integer.MAX_VALUE;
-
-        final int sign = dividend > 0 ^ divisor > 0 ? -1 : 1;
-        long ans = 0;
-        long dvd = Math.abs(dividend);
-        long dvs = Math.abs(divisor);
-
-        while (dvd >= dvs) {
-            long k = 1;
-            while (k * 2 * dvs <= dvd)
-                k *= 2;
-            dvd -= k * dvs;
-            ans += k;
+        // Determine the sign of the result
+        int sign = 1;
+        if ((dividend < 0) != (divisor < 0)) {
+            sign = -1;
         }
 
-        return sign * (int) ans;
+        // Use long to avoid integer overflow issues
+        long longDividend = Math.abs((long) dividend);
+        long longDivisor = Math.abs((long) divisor);
+
+        // This will accumulate the result of the division
+        long total = 0;
+
+        // Loop to find how many times the divisor can be subtracted from the dividend
+        while (longDividend >= longDivisor) {
+            // This counter will keep track of the number of left shifts
+            int count = 0;
+
+            // Double the divisor until it is less than or equal to the dividend
+            while (longDividend >= (longDivisor << (count + 1))) {
+                count++;
+            }
+
+            // Add the number of times we could double the divisor to the total
+            total += 1L << count;
+
+            // Subtract the final doubled divisor value from the dividend
+            longDividend -= longDivisor << count;
+        }
+
+        // Multiply the sign back into the total
+        long result = sign * total;
+
+        // Handle overflow cases by clamping to the Integer range
+        if (result >= Integer.MIN_VALUE && result <= Integer.MAX_VALUE) {
+            return (int) result;
+        }
+
+        // If the result is still outside the range, return the max integer value
+        return Integer.MAX_VALUE;
     }
 
 
