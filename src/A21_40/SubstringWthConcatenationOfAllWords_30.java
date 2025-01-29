@@ -22,31 +22,56 @@ Output: [0,9]
 
     }
     public static List<Integer> findSubstring(String s, String[] words) {
-        if (s.isEmpty() || words.length == 0)
-            return new ArrayList<>();
+        Map<String, Integer> wordCount = new HashMap<>();
 
-        final int k = words.length;
-        final int n = words[0].length();
-        List<Integer> ans = new ArrayList<>();
-        Map<String, Integer> count = new HashMap<>();
-
-        for (final String word : words)
-            count.merge(word, 1, Integer::sum);
-
-        for (int i = 0; i <= s.length() - k * n; ++i) {
-            Map<String, Integer> seen = new HashMap<>();
-            int j = 0;
-            for (; j < k; ++j) {
-                final String word = s.substring(i + j * n, i + j * n + n);
-                seen.merge(word, 1, Integer::sum);
-                if (seen.get(word) > count.getOrDefault(word, 0))
-                    break;
-            }
-            if (j == k)
-                ans.add(i);
+        // Create and populate a map with the count of each unique word
+        for (String word : words) {
+            wordCount.merge(word, 1, Integer::sum);
         }
 
-        return ans;
+        int strLength = s.length(), numOfWords = words.length;
+        int wordLength = words[0].length(); // Assume all words are the same length
+        List<Integer> indices = new ArrayList<>();
+
+        // Iterate over all possible word start indices to check for valid substrings
+        for (int i = 0; i < wordLength; ++i) {
+            Map<String, Integer> currentCount = new HashMap<>();
+            int left = i, right = i;
+            int totalWords = 0;
+
+            // Expand the window to the right, adding words into current window count
+            while (right + wordLength <= strLength) {
+                String sub = s.substring(right, right + wordLength);
+                right += wordLength;
+
+                // If the word is not in the original word list, reset the window
+                if (!wordCount.containsKey(sub)) {
+                    currentCount.clear();
+                    left = right;
+                    totalWords = 0;
+                    continue;
+                }
+
+                // Increase the count for the current word in the window
+                currentCount.merge(sub, 1, Integer::sum);
+                ++totalWords;
+
+                // If a word count exceeds its count in wordCount, reduce from left side
+                while (currentCount.get(sub) > wordCount.get(sub)) {
+                    String removed = s.substring(left, left + wordLength);
+                    left += wordLength;
+                    currentCount.merge(removed, -1, Integer::sum);
+                    --totalWords;
+                }
+
+                // If the total words reached the number of words, a valid substring is found
+                if (totalWords == numOfWords) {
+                    indices.add(left);
+                }
+            }
+        }
+        return indices;
+
     }
 
 
