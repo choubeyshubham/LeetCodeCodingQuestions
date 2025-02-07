@@ -23,7 +23,7 @@ Explanation: The input board is shown above and the only valid solution is shown
 
 
 
-g
+
     }
 
 
