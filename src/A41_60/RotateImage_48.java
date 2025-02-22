@@ -23,7 +23,7 @@ Output: [[7,4,1],[8,5,2],[9,6,3]]
             matrix[j] = temp;
         }
 
-        for (int i = 0; i < matrix.length; ++i)git
+        for (int i = 0; i < matrix.length; ++i)
             for (int j = i + 1; j < matrix.length; ++j) {
                 final int temp = matrix[i][j];
                 matrix[i][j] = matrix[j][i];
