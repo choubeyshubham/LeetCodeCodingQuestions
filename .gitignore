@@ -2,6 +2,7 @@
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
+.idea/misc.xml
 
 ### Eclipse ###
 .apt_generated
@@ -9,6 +10,8 @@ out/
 .factorypath
 .project
 .settings
+
+
 .springBeans
 .sts4-cache
 bin/

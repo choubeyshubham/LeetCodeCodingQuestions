@@ -21,7 +21,9 @@ Output:
 
      */
     public static void main(String[] args) {
+        int[] num={1,1,2};
 
+        System.out.println(permuteUnique(num));
 
 
 
