@@ -1,5 +1,7 @@
 package A61_80;
 
+import java.util.Arrays;
+
 public class SetMatrixZeroes_73 {
     /*
 
@@ -19,7 +21,9 @@ Output: [[1,0,1],[0,0,0],[1,0,1]]
      */
 
     public static void main(String[] args) {
-
+        int[][] arr={{1,1,1},{1,0,1},{1,1,1}};
+        setZeroes(arr);
+        System.out.println(Arrays.deepToString(arr));
 
 
 
