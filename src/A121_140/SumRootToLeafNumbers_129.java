@@ -45,6 +45,20 @@ The depth of the tree will not exceed 10.
 
     public static void main() {
 
+       TreeNode node1 = new TreeNode(1);
+       node1.left = new TreeNode(2);
+       node1.right = new TreeNode(3);
+
+        TreeNode node2 = new TreeNode(4);
+        node2.left = new TreeNode(9);
+        node2.right = new TreeNode(0);
+        node2.left.left = new TreeNode(5);
+        node2.left.right = new TreeNode(1);
+
+
+        System.out.println(sumNumbers(node2));
+
+
     }
 
     public static int sumNumbers(TreeNode root) {
@@ -65,6 +79,7 @@ The depth of the tree will not exceed 10.
         dfs(root.left, path * 10 + root.val);
         dfs(root.right, path * 10 + root.val);
     }
+    
 
 
 
