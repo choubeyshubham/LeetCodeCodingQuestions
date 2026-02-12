@@ -1,5 +1,7 @@
 package A141_A60;
 
+import java.util.Stack;
+
 public class MinStack_155 {
     /*
 Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
@@ -44,26 +46,26 @@ At most 3 * 104 calls will be made to push, pop, top, and getMin.
 
      */
 
-    public void push(int x) {
+    public static void push(int x) {
         if (stack.isEmpty())
             stack.push(new int[] {x, x});
         else
             stack.push(new int[] {x, Math.min(x, stack.peek()[1])});
     }
 
-    public void pop() {
+    public static void pop() {
         stack.pop();
     }
 
-    public int top() {
+    public static int top() {
         return stack.peek()[0];
     }
 
-    public int getMin() {
+    public static int getMin() {
         return stack.peek()[1];
     }
 
-    private Stack<int[]> stack = new Stack<>(); // {x, min}
+    private static Stack<int[]> stack = new Stack<>(); // {x, min}
 
 
 
